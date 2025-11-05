@@ -1,0 +1,6 @@
+nginx:latest
+mysql:latest
+python:3.7
+node:18
+redis:latest
+alpine:latest
