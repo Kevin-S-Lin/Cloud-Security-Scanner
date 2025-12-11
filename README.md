@@ -7,3 +7,10 @@ Several Folders
 - [ ] Objective 1
 - [ ] Objective 2
 - [ ] Objective 3
+
+``` bash
+aws ecr get-login-password --region us-east-1 \
+| docker login \
+    --username AWS \
+    --password-stdin 322615215464.dkr.ecr.us-east-1.amazonaws.com
+```

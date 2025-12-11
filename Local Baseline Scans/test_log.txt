@@ -1,0 +1,36 @@
+Starting remote local scan run
+Starting local scan baseline...
+Running single trial for 1 image(s)
+Results will be stored in local_scan_results
+--- Processing: 322615215464.dkr.ecr.us-east-1.amazonaws.com/image-vulnerability-scan:debian-stretch-test (Trial 1) ---
+Pulling 322615215464.dkr.ecr.us-east-1.amazonaws.com/image-vulnerability-scan:debian-stretch-test...
+debian-stretch-test: Pulling from image-vulnerability-scan
+8372a04f222b: Pulling fs layer
+8372a04f222b: Verifying Checksum
+8372a04f222b: Download complete
+8372a04f222b: Pull complete
+Digest: sha256:16ee3e11da473f6565ef94a715f1a38b3079e0664913be78869c336a71cb6085
+Status: Downloaded newer image for 322615215464.dkr.ecr.us-east-1.amazonaws.com/image-vulnerability-scan:debian-stretch-test
+322615215464.dkr.ecr.us-east-1.amazonaws.com/image-vulnerability-scan:debian-stretch-test
+Scanning 322615215464.dkr.ecr.us-east-1.amazonaws.com/image-vulnerability-scan:debian-stretch-test...
+2025-12-11T00:36:09Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-12-11T00:36:09Z	INFO	[secret] Secret scanning is enabled
+2025-12-11T00:36:09Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2025-12-11T00:36:09Z	INFO	[secret] Please see https://trivy.dev/v0.67/docs/scanner/secret#recommendation for faster secret detection
+2025-12-11T00:36:10Z	INFO	Detected OS	family="debian" version="9.13"
+2025-12-11T00:36:10Z	INFO	[debian] Detecting vulnerabilities...	os_version="9" pkg_num=83
+2025-12-11T00:36:10Z	INFO	Number of language-specific files	num=0
+2025-12-11T00:36:10Z	WARN	This OS version is no longer supported by the distribution	family="debian" version="9.13"
+2025-12-11T00:36:10Z	WARN	The vulnerability detection may be insufficient because security updates are not provided
+
+📣 [34mNotices:[0m
+  - Version 0.68.1 of Trivy is now available, current version is 0.67.2
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+Parsing report local_scan_results/reports/322615215464.dkr.ecr.us-east-1.amazonaws.com/image-vulnerability-scan/debian-stretch-test/report_20251211003609.json...
+Scan complete. Duration: 1003 ms. Counts: C:2, H:28, M:5, L:36 (Total:71)
+--- All scans complete. ---
+Summary metrics logged to local_scan_results/summary_metrics.csv
+Full JSON reports are in local_scan_results/reports/
+Run complete. Archive uploaded (or attempted).

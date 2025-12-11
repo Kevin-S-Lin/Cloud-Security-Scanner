@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.2",
+  "description": "Hardcoded test document: runs simple version checks and writes to a log file.",
+  "runtimeConfig": {
+    "aws:runShellScript": {
+      "properties": [
+        {
+          "id": "0.aws:runShellScript",
+          "runCommand": [
+            "LOGFILE=test_log.txt",
+            "echo '--- trivy --version ---' >> \"$LOGFILE\"",
+            "trivy --version >> \"$LOGFILE\" 2>&1 || echo 'trivy: command not found' >> \"$LOGFILE\"",
+            "echo '--- whoami ---' >> \"$LOGFILE\"",
+            "whoami >> \"$LOGFILE\" 2>&1 || echo 'whoami: command not found' >> \"$LOGFILE\"",
+            "echo '--- docker --version ---' >> \"$LOGFILE\"",
+            "docker --version >> \"$LOGFILE\" 2>&1 || echo 'docker: command not found' >> \"$LOGFILE\""
+          ],
+          "workingDirectory": "/home/kevin/Cloud-Security-Scanner",
+          "timeoutSeconds": 15
+        }
+      ]
+    }
+  }
+}

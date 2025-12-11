@@ -1,0 +1,6 @@
+--- trivy --version ---
+Version: 0.67.2
+--- whoami ---
+root
+--- docker --version ---
+Docker version 28.2.2, build 28.2.2-0ubuntu1~24.04.1

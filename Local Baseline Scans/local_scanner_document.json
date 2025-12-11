@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.2",
+  "description": "Hardcoded test document: runs simple version checks and writes to a log file.",
+  "parameters": {
+    "S3Bucket": {
+      "type": "String",
+      "default": "local-baseline-vuln-scan-reports",
+      "description": "The S3 bucket to store the scan reports."
+    },
+    "ImageTag": {
+      "type": "String",
+      "description": "Repo is hardcoded, this is just tag of image from repo."
+    }
+  },
+  "runtimeConfig": {
+    "aws:runShellScript": {
+      "properties": [
+        {
+          "id": "0.aws:runShellScript",
+          "runCommand": [
+            "LOGFILE=test_log.txt",
+            "S3_BUCKET={{ S3Bucket }}",
+            "IMAGE_TAG={{ ImageTag }}",
+            "IMAGE_URI=322615215464.dkr.ecr.us-east-1.amazonaws.com/image-vulnerability-scan:$IMAGE_TAG",
+            "echo 'Starting remote local scan run' > \"$LOGFILE\"",
+            "./run_local_scans_from_uris.sh \"$IMAGE_URI\" >> \"$LOGFILE\" 2>&1 || echo 'Scan script exited non-zero' >> \"$LOGFILE\"", 
+            "aws s3 cp 'local_scan_results/summary_metrics.csv' s3://$S3_BUCKET/ --only-show-errors >> \"$LOGFILE\" 2>&1 || echo 'Failed to upload results' >> \"$LOGFILE\"",
+            "echo 'Run complete. Archive uploaded (or attempted).' >> \"$LOGFILE\""
+          ],
+          "workingDirectory": "/home/kevin/Cloud-Security-Scanner/Local Baseline Scans",
+          "timeoutSeconds": 7200
+        }
+      ]
+    }
+  }
+}
